@@ -11,6 +11,13 @@
     const msg = link.dataset.waMsg || '';
     link.href =
       'https://wa.me/' + WHATSAPP_NUMBER + (msg ? '?text=' + encodeURIComponent(msg) : '');
+
+    // conversão principal do site: clique em qualquer botão de WhatsApp
+    link.addEventListener('click', () => {
+      trackEvent('whatsapp_click', {
+        link_location: (link.closest('section') || {}).id || 'header',
+      });
+    });
   });
 
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -62,7 +69,8 @@
 
   /* ---------- Fagulhas ambiente no hero ---------- */
   const sparkField = document.getElementById('heroSparkles');
-  if (sparkField) {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (sparkField && !prefersReducedMotion) {
     const SPARK_COUNT = 14;
     for (let i = 0; i < SPARK_COUNT; i++) {
       const s = document.createElement('span');
@@ -103,6 +111,111 @@
       const lit = !aboutCandle.classList.contains('is-lit');
       setLit(lit);
       localStorage.setItem(ABOUT_CANDLE_KEY, lit ? '1' : '0');
+    });
+  }
+
+  /* ---------- Mascote: pode ser arrastada pra qualquer lugar da tela ---------- */
+  const mascot = document.querySelector('.mascot-companion');
+  if (mascot) {
+    let dragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+
+    const moveTo = (x, y) => {
+      const rect = mascot.getBoundingClientRect();
+      const maxX = window.innerWidth - rect.width;
+      const maxY = window.innerHeight - rect.height;
+      mascot.style.left = clamp(x, 0, maxX) + 'px';
+      mascot.style.top = clamp(y, 0, maxY) + 'px';
+      mascot.style.right = 'auto';
+    };
+
+    // escuta o movimento/soltura no window (não no elemento) — assim o arraste
+    // continua funcionando mesmo depois que a vela sai de baixo do ponteiro,
+    // sem depender de setPointerCapture (que pode ser cancelado nessa hora)
+    mascot.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      mascot.classList.add('dragging');
+      const rect = mascot.getBoundingClientRect();
+      offsetX = e.clientX - rect.left;
+      offsetY = e.clientY - rect.top;
+      e.preventDefault();
+    });
+
+    window.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      moveTo(e.clientX - offsetX, e.clientY - offsetY);
+    });
+
+    const endDrag = () => {
+      if (!dragging) return;
+      dragging = false;
+      mascot.classList.remove('dragging');
+    };
+
+    window.addEventListener('pointerup', endDrag);
+    window.addEventListener('pointercancel', endDrag);
+
+    // se a janela encolher (ex: virar o celular), garante que ela não fique presa fora da tela
+    window.addEventListener('resize', () => {
+      const rect = mascot.getBoundingClientRect();
+      moveTo(rect.left, rect.top);
+    });
+  }
+
+  /* ---------- Analytics (LGPD): só carrega depois do consentimento ---------- */
+  // TODO: trocar pelo Measurement ID real do Google Analytics 4 (formato G-XXXXXXXXXX)
+  const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+  const CONSENT_KEY = 'velaDominusCookieConsent';
+
+  function loadGoogleAnalytics() {
+    if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID.indexOf('XXXX') !== -1) return;
+    if (window.gaLoaded) return;
+    window.gaLoaded = true;
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag() {
+      window.dataLayer.push(arguments);
+    };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_MEASUREMENT_ID, { anonymize_ip: true });
+  }
+
+  function trackEvent(name, params) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', name, params || {});
+    }
+  }
+
+  const cookieBanner = document.getElementById('cookieBanner');
+  const cookieAccept = document.getElementById('cookieAccept');
+  const cookieDecline = document.getElementById('cookieDecline');
+
+  if (cookieBanner && cookieAccept && cookieDecline) {
+    const consent = localStorage.getItem(CONSENT_KEY);
+
+    if (consent === 'accepted') {
+      loadGoogleAnalytics();
+    } else if (consent !== 'declined') {
+      cookieBanner.hidden = false;
+    }
+
+    cookieAccept.addEventListener('click', () => {
+      localStorage.setItem(CONSENT_KEY, 'accepted');
+      cookieBanner.hidden = true;
+      loadGoogleAnalytics();
+    });
+
+    cookieDecline.addEventListener('click', () => {
+      localStorage.setItem(CONSENT_KEY, 'declined');
+      cookieBanner.hidden = true;
     });
   }
 })();

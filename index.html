@@ -3,19 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Velas Dominus — A arte de iluminar seu caminho</title>
+    <title>Velas Dominus | Velas artesanais feitas à mão</title>
     <meta
       name="description"
-      content="Velas artesanais Velas Dominus. Cada vela é acesa à mão, com fogo, cera selecionada e propósito. Conheça o catálogo e fale conosco no WhatsApp."
+      content="Velas artesanais Velas Dominus: feitas à mão, com fogo, cera selecionada e propósito. Confira o catálogo e fale com a gente pelo WhatsApp."
     />
+    <meta name="theme-color" content="#14161f" />
+    <meta name="robots" content="index, follow" />
+    <!-- TODO: trocar pela URL final do site assim que o domínio for definido -->
+    <link rel="canonical" href="https://www.velasdominus.com.br/" />
+
+    <!-- Open Graph / WhatsApp, Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Velas Dominus" />
+    <meta property="og:title" content="Velas Dominus | Velas artesanais feitas à mão" />
+    <meta
+      property="og:description"
+      content="Velas artesanais feitas à mão, com fogo, cera selecionada e propósito. Confira o catálogo e fale com a gente pelo WhatsApp."
+    />
+    <meta property="og:url" content="https://www.velasdominus.com.br/" />
+    <meta property="og:image" content="https://www.velasdominus.com.br/image/foto_gande.jpg" />
+    <meta property="og:image:width" content="1376" />
+    <meta property="og:image:height" content="768" />
+
+    <!-- Twitter/X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Velas Dominus | Velas artesanais feitas à mão" />
+    <meta
+      name="twitter:description"
+      content="Velas artesanais feitas à mão, com fogo, cera selecionada e propósito."
+    />
+    <meta name="twitter:image" content="https://www.velasdominus.com.br/image/foto_gande.jpg" />
+
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="assets/favicon-16.png" sizes="16x16" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.min.css" />
+
+    <!--
+      Meta Pixel (desativado) — quando formos rodar anúncios, descomente o bloco
+      abaixo e troque SEU_PIXEL_ID. Ele só deve ser carregado depois do
+      consentimento de cookies (ver cookieConsent em js/main.js).
+
+      <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'SEU_PIXEL_ID');
+        fbq('track', 'PageView');
+      </script>
+    -->
+
   </head>
   <body>
     <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
@@ -49,6 +97,18 @@
     <main>
       <!-- ===== INÍCIO ===== -->
       <section id="inicio" class="hero">
+        <picture class="hero-bg">
+          <source srcset="image/foto_gande.webp" type="image/webp" />
+          <img
+            src="image/foto_gande.jpg"
+            alt=""
+            class="hero-bg-img"
+            width="1376"
+            height="768"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
         <div class="hero-sparkles" id="heroSparkles" aria-hidden="true"></div>
 
         <div class="container hero-content reveal">
@@ -146,7 +206,7 @@
 
           <div class="about-values">
             <div class="value-card">
-              <span class="value-icon">🔥</span>
+              <span class="value-icon" aria-hidden="true">🔥</span>
               <h3>Intenção</h3>
               <p>
                 Cada vela carrega um propósito: um pedido, um desejo, uma
@@ -154,14 +214,14 @@
               </p>
             </div>
             <div class="value-card">
-              <span class="value-icon">🕊️</span>
+              <span class="value-icon" aria-hidden="true">🕊️</span>
               <h3>Todos os caminhos</h3>
               <p>
                 Há uma vela para cada momento, cada intenção e cada caminho.
               </p>
             </div>
             <div class="value-card">
-              <span class="value-icon">✨</span>
+              <span class="value-icon" aria-hidden="true">✨</span>
               <h3>Leveza</h3>
               <p>
                 Um pouco de calma pra um mundo que já é cinza e pesado demais.
@@ -396,6 +456,18 @@
       </svg>
     </div>
 
-    <script src="js/main.js"></script>
+    <!-- Aviso de cookies (LGPD) — só habilita Analytics/Pixel depois do aceite -->
+    <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Aviso de cookies" hidden>
+      <p>
+        Usamos cookies para entender como você usa o site e melhorar sua
+        experiência. Ao continuar navegando, você concorda com isso.
+      </p>
+      <div class="cookie-banner-actions">
+        <button type="button" class="btn btn-small btn-primary" id="cookieAccept">Aceitar</button>
+        <button type="button" class="btn btn-small btn-ghost" id="cookieDecline">Recusar</button>
+      </div>
+    </div>
+
+    <script src="js/main.min.js"></script>
   </body>
 </html>

@@ -96,13 +96,27 @@ p { margin: 0 0 1em; }
 
 .btn-whatsapp {
   background: linear-gradient(135deg, #35c46a, #1f9e52);
-  color: #fff;
+  color: var(--serene-bg);
   box-shadow: 0 8px 22px rgba(31,158,82,.35);
 }
 .wa-icon { width: 20px; height: 20px; fill: currentColor; }
 
-.btn-small { padding: 9px 18px; font-size: .85rem; }
+.btn-ghost {
+  background: transparent;
+  color: var(--serene-text-muted);
+  border: 1px solid rgba(232,184,75,.3);
+}
+.btn-ghost:hover { color: var(--serene-text); }
+
+.btn-small { padding: 12px 18px; font-size: .85rem; }
 .btn-large { padding: 18px 40px; font-size: 1.15rem; }
+
+/* ============ FOCO (teclado) ============ */
+:focus-visible {
+  outline: 2px solid var(--serene-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
 
 /* ============ HEADER / NAV ============ */
 .site-header {
@@ -110,6 +124,8 @@ p { margin: 0 0 1em; }
   top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 18px 0;
+  /* scrim leve sempre presente, pra garantir legibilidade sobre a foto do Hero */
+  background: linear-gradient(180deg, rgba(20,22,31,.65) 0%, rgba(20,22,31,0) 100%);
   transition: background .35s ease, padding .35s ease, box-shadow .35s ease;
 }
 .site-header.scrolled {
@@ -172,12 +188,14 @@ p { margin: 0 0 1em; }
 .nav-link:hover::after { width: 100%; }
 
 .nav-toggle {
+  position: relative;
+  z-index: 2;
   display: none;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   background: none;
   border: 1px solid rgba(232,184,75,.4);
   border-radius: 8px;
@@ -195,16 +213,31 @@ p { margin: 0 0 1em; }
 .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ============ HERO (paleta serena — preview) ============ */
+/* ============ HERO ============ */
 .hero {
   position: relative;
+  z-index: 0; /* cria um contexto de empilhamento local, pra .hero-bg (z-index:-1) não vazar pra trás da página inteira */
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  background: var(--serene-bg) url('../image/foto_gande.jpg') center / cover no-repeat;
+  background: var(--serene-bg);
+}
+
+/* foto de fundo como <img> real (melhor performance/LCP que background-image),
+   z-index negativo pra ficar sempre atrás do glow, das fagulhas e do texto */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
 }
 
 /* clima vem só de cor e luz pontual, sem ilustração de fundo */
@@ -371,7 +404,8 @@ p { margin: 0 0 1em; }
 }
 
 /* ============ SECTION SHARED ============ */
-section { position: relative; padding: 140px 0; }
+/* compensa o header fixo ao rolar até uma âncora do menu */
+section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
 
 .section-head { max-width: 680px; margin: 0 auto 68px; text-align: center; }
 .section-eyebrow {
@@ -598,19 +632,28 @@ section { position: relative; padding: 140px 0; }
 }
 .footer-inner p { margin: 0; color: var(--serene-text-muted); font-size: .88rem; }
 
-/* ============ MASCOTE (vela fixa, sempre visível) ============ */
+/* ============ MASCOTE (vela arrastável, sempre visível) ============ */
 .mascot-companion {
   position: fixed;
   left: 18px;
   top: 100px;
   z-index: 45;
-  width: 120px;
-  pointer-events: none;
+  width: 92px;
+  cursor: grab;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
   filter: drop-shadow(0 10px 16px rgba(0,0,0,.45));
+}
+.mascot-companion.dragging {
+  cursor: grabbing;
+}
+.mascot-companion.dragging .mascot-svg {
+  animation-play-state: paused;
 }
 
 @media (max-width: 640px) {
-  .mascot-companion { width: 84px; left: 12px; top: 84px; }
+  .mascot-companion { width: 64px; left: 12px; top: 84px; }
 }
 
 @keyframes mascot-sway {
@@ -702,13 +745,21 @@ section { position: relative; padding: 140px 0; }
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 26px;
+    gap: 22px;
     padding: 40px 32px;
     transform: translateX(100%);
-    transition: transform .35s ease;
+    /* visibility some com atraso: enquanto fechado, os links saem da ordem de
+       tab (teclado) mesmo estando só deslocados pra fora da tela */
+    visibility: hidden;
+    transition: transform .35s ease, visibility 0s linear .35s;
   }
-  .nav-links.open { transform: translateX(0); }
+  .nav-links.open {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform .35s ease, visibility 0s linear 0s;
+  }
   .nav-toggle { display: flex; }
+  .nav-links .nav-link { display: block; padding: 10px 0; font-size: 1.05rem; }
 
   section { padding: 96px 0; }
   .about-values { grid-template-columns: 1fr; }
@@ -721,4 +772,35 @@ section { position: relative; padding: 140px 0; }
     transition-duration: .001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ============ AVISO DE COOKIES (LGPD) ============ */
+.cookie-banner {
+  position: fixed;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 200;
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--serene-card);
+  border: 1px solid rgba(232,184,75,.22);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-deep);
+  padding: 20px 22px;
+}
+.cookie-banner[hidden] { display: none; }
+.cookie-banner p {
+  color: var(--serene-text-muted);
+  font-size: .92rem;
+  margin: 0 0 14px;
+}
+.cookie-banner-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .cookie-banner { left: 12px; right: 12px; bottom: 12px; padding: 18px; }
 }
