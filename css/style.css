@@ -108,6 +108,21 @@ p { margin: 0 0 1em; }
 }
 .btn-ghost:hover { color: var(--serene-text); }
 
+/* estilo secundário elegante — mesmo destino (WhatsApp) dos botões verdes,
+   mas mais discreto pra não competir com o CTA principal do Contato */
+.btn-outline-gold {
+  background: transparent;
+  color: var(--serene-gold);
+  border: 1.5px solid rgba(232,184,75,.5);
+  padding: 12px 22px;
+  font-size: .92rem;
+}
+.btn-outline-gold:hover {
+  background: rgba(232,184,75,.12);
+  border-color: var(--serene-gold);
+}
+.btn-outline-gold .wa-icon { width: 16px; height: 16px; }
+
 .btn-small { padding: 12px 18px; font-size: .85rem; }
 .btn-large { padding: 18px 40px; font-size: 1.15rem; }
 
@@ -219,7 +234,9 @@ p { margin: 0 0 1em; }
   z-index: 0; /* cria um contexto de empilhamento local, pra .hero-bg (z-index:-1) não vazar pra trás da página inteira */
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  /* título ancorado mais perto do topo, numa área da foto sem rostos
+     (céu/prateleiras), em vez de centralizado sobre os personagens */
+  align-items: flex-start;
   justify-content: center;
   text-align: center;
   overflow: hidden;
@@ -290,8 +307,10 @@ p { margin: 0 0 1em; }
   z-index: 2;
   max-width: 720px;
   /* horizontal igual ao .container (mesmo elemento, essa regra vem depois e
-     sobrescreveria o gutter lateral se fosse só "80px 0") */
-  padding: 80px 24px;
+     sobrescreveria o gutter lateral se fosse só "80px 0"). padding-top pequeno
+     de propósito — o próprio padding da section (140px/96px) já empurra o
+     conteúdo pra baixo do header; isso só ajusta fino a posição do título. */
+  padding: 24px 24px 80px;
 }
 
 /* faíscas decorativas ao lado do título, tipo cartaz — fora do fluxo do texto
@@ -308,9 +327,6 @@ p { margin: 0 0 1em; }
 .title-spark--2 { bottom: 4%; right: -6%; animation-delay: 1.1s; }
 @media (max-width: 640px) {
   .title-spark { display: none; }
-  /* evita que o título suba demais na centralização vertical e colida com o mascote fixo */
-  .hero { align-items: flex-start; }
-  .hero-content { padding-top: 150px; }
 }
 
 .eyebrow {
@@ -374,22 +390,33 @@ p { margin: 0 0 1em; }
   .hero-candle .hc-flame-group { animation: none; }
 }
 
+/* ============ APRESENTAÇÃO (bloco logo abaixo do Início) ============ */
+/* já não fica sobre a foto — fundo próprio, com um brilho sutil ecoando o
+   glow do Hero, pra emendar visualmente sem repetir a imagem */
+.hero-intro {
+  background: radial-gradient(ellipse 60% 60% at 50% 20%, rgba(232,184,75,.07), transparent 70%), var(--serene-bg);
+  text-align: center;
+}
+.hero-intro-inner {
+  max-width: 720px;
+}
+
 .hero-tagline {
   font-family: var(--font-heading);
   font-style: italic;
   font-size: clamp(1.1rem, 2.4vw, 1.5rem);
   color: var(--serene-gold);
+  margin-top: 0;
   margin-bottom: 1.2em;
 }
 
 .hero-desc-card {
-  background: rgba(28,31,43,.55);
-  border: 1px solid rgba(232,184,75,.1);
+  background: var(--serene-card);
+  border: 1px solid rgba(232,184,75,.14);
   border-radius: var(--radius);
   max-width: 600px;
   margin: 0 auto 2em;
-  padding: 20px 28px;
-  backdrop-filter: blur(3px);
+  padding: 24px 28px;
 }
 
 .hero-desc {
@@ -541,9 +568,6 @@ section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
   box-shadow: 0 16px 34px rgba(0,0,0,.4);
 }
 
-.product-card--placeholder { text-align: center; }
-.product-card--placeholder:hover { border-color: rgba(232,184,75,.3); }
-
 .placeholder-art {
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -555,20 +579,12 @@ section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
   justify-content: center;
   background: rgba(0,0,0,.15);
 }
-.placeholder-icon { width: 40%; height: 40%; opacity: .5; }
+.placeholder-icon { width: 40%; height: 40%; opacity: .65; }
 .placeholder-icon rect { fill: none; stroke: var(--serene-amber); stroke-width: 2.5; stroke-dasharray: 6 5; }
-.placeholder-icon circle, .placeholder-icon path { fill: var(--serene-amber); opacity: .8; }
-
-.product-card--placeholder h3 {
-  font-size: 1rem;
-  margin-bottom: 6px;
-  color: var(--serene-text-muted);
-  font-style: italic;
-}
+.placeholder-icon circle, .placeholder-icon path { fill: var(--serene-amber); opacity: .85; }
 
 .product-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
-.product-desc { color: var(--serene-text-muted); font-size: .92rem; margin-bottom: 14px; }
-.product-card--placeholder .product-desc { color: var(--serene-text-muted); font-size: .85rem; margin-bottom: 0; }
+.product-desc { color: var(--serene-text-muted); font-size: .92rem; margin-bottom: 18px; }
 .product-tags {
   display: flex;
   justify-content: center;
@@ -587,12 +603,19 @@ section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
 
 .catalog-note {
   text-align: center;
-  margin-top: 40px;
+  max-width: 620px;
+  margin: 40px auto 0;
   color: var(--serene-text-muted);
   font-family: var(--font-heading);
   font-style: italic;
   font-size: .95rem;
 }
+.catalog-note-link {
+  color: var(--serene-gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.catalog-note-link:hover { color: var(--serene-gold-light); }
 
 /* ============ DIFFERENTIALS ============ */
 .differentials { background: var(--serene-bg); }
