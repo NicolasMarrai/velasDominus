@@ -97,10 +97,10 @@
   }
 
   /* ---------- Vela da seção Sobre: acende um glow narrativo atrás do texto ---------- */
+  // Sempre começa apagada a cada visita/recarregamento — o aceso é sempre um gesto do visitante.
   const aboutCandle = document.getElementById('aboutCandle');
   const aboutTop = document.getElementById('aboutTop');
   const aboutInvite = document.getElementById('aboutInvite');
-  const ABOUT_CANDLE_KEY = 'velaDominusAboutLit';
   const ABOUT_INVITE_UNLIT = 'Acenda a vela e desperte a magia';
   const ABOUT_INVITE_LIT = 'A magia despertou';
 
@@ -113,14 +113,8 @@
       aboutInvite.textContent = lit ? ABOUT_INVITE_LIT : ABOUT_INVITE_UNLIT;
     };
 
-    if (localStorage.getItem(ABOUT_CANDLE_KEY) === '1') {
-      setLit(true);
-    }
-
     aboutCandle.addEventListener('click', () => {
-      const lit = !aboutCandle.classList.contains('is-lit');
-      setLit(lit);
-      localStorage.setItem(ABOUT_CANDLE_KEY, lit ? '1' : '0');
+      setLit(!aboutCandle.classList.contains('is-lit'));
     });
   }
 
