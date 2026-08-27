@@ -47,6 +47,16 @@
     });
   });
 
+  // fecha o menu ao tocar fora dele (agora que é um dropdown compacto, não
+  // um painel que cobre a tela toda)
+  document.addEventListener('click', (e) => {
+    if (!navLinks.classList.contains('open')) return;
+    if (navLinks.contains(e.target) || navToggle.contains(e.target)) return;
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Abrir menu');
+  });
+
   /* ---------- Revelar seções/cartões ao rolar ---------- */
   const revealTargets = document.querySelectorAll('.reveal');
 

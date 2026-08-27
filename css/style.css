@@ -735,31 +735,51 @@ section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
 }
 
 @media (max-width: 760px) {
+  /* menu compacto tipo dropdown, ancorado no canto — não ocupa a tela toda */
   .nav-links {
     position: fixed;
-    top: 0; right: 0;
-    height: 100vh;
-    width: min(78vw, 320px);
-    background: var(--serene-bg);
-    border-left: 1px solid rgba(232,184,75,.2);
+    top: 68px;
+    right: 16px;
+    left: auto;
+    height: auto;
+    width: min(56vw, 210px);
+    background: var(--serene-card);
+    border: 1px solid rgba(232,184,75,.22);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-deep);
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 22px;
-    padding: 40px 32px;
-    transform: translateX(100%);
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 2px;
+    padding: 10px;
+    transform-origin: top right;
+    transform: scale(.92) translateY(-6px);
+    opacity: 0;
     /* visibility some com atraso: enquanto fechado, os links saem da ordem de
-       tab (teclado) mesmo estando só deslocados pra fora da tela */
+       tab (teclado) mesmo estando só encolhidos/invisíveis */
     visibility: hidden;
-    transition: transform .35s ease, visibility 0s linear .35s;
+    transition: transform .2s ease, opacity .2s ease, visibility 0s linear .2s;
   }
   .nav-links.open {
-    transform: translateX(0);
+    transform: scale(1) translateY(0);
+    opacity: 1;
     visibility: visible;
-    transition: transform .35s ease, visibility 0s linear 0s;
+    transition: transform .2s ease, opacity .2s ease, visibility 0s linear 0s;
   }
   .nav-toggle { display: flex; }
-  .nav-links .nav-link { display: block; padding: 10px 0; font-size: 1.05rem; }
+  .nav-links .nav-link {
+    display: block;
+    padding: 11px 12px;
+    font-size: .95rem;
+    border-radius: 8px;
+    transition: background .2s ease, color .2s ease;
+  }
+  .nav-links .nav-link::after { display: none; }
+  .nav-links .nav-link:hover,
+  .nav-links .nav-link:focus-visible {
+    background: rgba(232,184,75,.1);
+    color: var(--serene-gold);
+  }
 
   section { padding: 96px 0; }
   .about-values { grid-template-columns: 1fr; }
