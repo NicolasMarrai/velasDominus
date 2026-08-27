@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velas Dominus — A arte de iluminar seu caminho</title>
+    <meta
+      name="description"
+      content="Velas artesanais Velas Dominus. Cada vela é acesa à mão, com fogo, cera selecionada e propósito. Conheça o catálogo e fale conosco no WhatsApp."
+    />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
+
+    <header class="site-header" id="siteHeader">
+      <nav class="nav container">
+        <a href="#inicio" class="logo">
+          <img src="assets/logo.png" alt="" class="logo-img" />
+          Velas <span>Dominus</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#inicio" class="nav-link">Início</a></li>
+          <li><a href="#sobre" class="nav-link">Sobre</a></li>
+          <li><a href="#catalogo" class="nav-link">Catálogo</a></li>
+          <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
+          <li><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ===== INÍCIO ===== -->
+      <section id="inicio" class="hero">
+        <div class="hero-sparkles" id="heroSparkles" aria-hidden="true"></div>
+
+        <div class="container hero-content reveal">
+          <p class="eyebrow">✦ Oficina de velas artesanais ✦</p>
+          <h1 class="hero-title">
+            <span class="title-spark title-spark--1" aria-hidden="true">✦</span>
+            <span class="title-spark title-spark--2" aria-hidden="true">✦</span>
+            <span class="title-line">Velas</span>
+            <span class="title-line title-line--accent">Dominus</span>
+          </h1>
+
+          <div class="hero-candle-wrap" id="heroCandleWrap">
+            <div class="hero-invite" id="heroInvite">
+              Clique para Acender a vela e despertar a magia
+            </div>
+            <button
+              id="heroCandle"
+              class="hero-candle"
+              aria-label="Acender ou apagar a vela"
+              aria-pressed="false"
+            >
+              <svg
+                class="hero-candle-svg"
+                viewBox="0 0 100 140"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <ellipse class="hc-glow" cx="50" cy="45" rx="46" ry="46" />
+                <g class="hc-flame-group">
+                  <path
+                    class="hc-flame-outer"
+                    d="M50 8 C 36 26 32 42 50 56 C 68 42 64 26 50 8 Z"
+                  />
+                  <path
+                    class="hc-flame-inner"
+                    d="M50 24 C 44 33 43 43 50 50 C 57 43 56 33 50 24 Z"
+                  />
+                </g>
+                <rect class="hc-wick" x="48" y="46" width="4" height="12" rx="2" />
+                <path
+                  class="hc-body"
+                  d="M28 58 L72 58 L77 122 C77 130 65 136 50 136 C35 136 23 130 23 122 Z"
+                />
+                <path class="hc-body-highlight" d="M38 58 C 36 90 37 118 42 132" />
+                <ellipse class="hc-plate" cx="50" cy="136" rx="34" ry="6" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="hero-reveal" id="heroReveal">
+            <p class="hero-tagline">A arte de iluminar seu caminho</p>
+            <p class="hero-desc">
+              Cada vela nasce do fogo, da cera e de muitas horas de trabalho
+              manual — feita para transformar qualquer ambiente em um lugar mais
+              quente, mais bonito e mais seu.
+            </p>
+            <div class="hero-actions">
+              <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
+              <a
+                href="https://wa.me/5500000000000"
+                target="_blank"
+                rel="noopener"
+                data-wa-msg="Olá! Vim do site da Velas Dominus e queria saber mais."
+                class="js-whatsapp-link btn btn-whatsapp"
+                >Fale no WhatsApp</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SOBRE ===== -->
+      <section id="sobre" class="about">
+        <div class="container">
+          <div class="about-text reveal">
+            <span class="section-eyebrow">Nossa história</span>
+            <h2>Sobre a Velas Dominus</h2>
+            <!-- Texto baseado no relato do cliente sobre a origem da marca — revisar/aprovar com ele antes de publicar -->
+
+            <p>
+              Uma vela é mais do que decoração: é o momento em que alguém para,
+              respira e coloca ali uma intenção — um pedido, um desejo, uma
+              esperança. Vale pra quem acende uma vela na igreja, pra quem segue
+              o candomblé, a umbanda ou qualquer outro caminho de fé, e vale pra
+              quem só quer um instante seu, sem religião nenhuma envolvida.
+            </p>
+            <p>
+              Na imensa maioria das vezes, o pedido é simples: saúde, paz, que
+              as coisas deem certo. É esse sentimento — de cuidado, intenção e
+              leveza — que a gente tenta colocar em cada vela que sai da nossa
+              oficina.
+            </p>
+            <div class="about-values">
+              <div class="value-card">
+                <span class="value-icon">🔥</span>
+                <h3>Intenção</h3>
+                <p>
+                  Cada vela carrega um propósito: um pedido, um desejo, uma
+                  pausa no meio do dia.
+                </p>
+              </div>
+              <div class="value-card">
+                <span class="value-icon">🕊️</span>
+                <h3>Todos os caminhos</h3>
+                <p>
+                  Há uma vela para cada momento, cada intenção e cada caminho.
+                </p>
+              </div>
+              <div class="value-card">
+                <span class="value-icon">✨</span>
+                <h3>Leveza</h3>
+                <p>
+                  Um pouco de calma pra um mundo que já é cinza e pesado demais.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CATÁLOGO ===== -->
+      <section id="catalogo" class="catalog">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Catálogo</span>
+            <h2>Nossas velas</h2>
+            <p class="section-desc">
+              Uma seleção dos nossos modelos. Fotos, aromas e informações finais
+              entram assim que o catálogo oficial for confirmado — por enquanto,
+              um gostinho do que está por vir.
+            </p>
+          </div>
+
+          <!-- Cards de espaço reservado — trocar pelas fotos e infos reais de cada vela assim que o cliente enviar -->
+          <div class="catalog-grid">
+            <article class="product-card product-card--placeholder reveal">
+              <div class="placeholder-art">
+                <svg viewBox="0 0 64 64" class="placeholder-icon">
+                  <rect x="4" y="4" width="56" height="56" rx="8" />
+                  <circle cx="23" cy="22" r="6" />
+                  <path d="M8 46 L24 30 L34 40 L44 26 L58 46 Z" />
+                </svg>
+              </div>
+              <h3>Foto em breve</h3>
+              <p class="product-desc">
+                Nome, aroma e informações da vela entram aqui.
+              </p>
+            </article>
+
+            <article class="product-card product-card--placeholder reveal">
+              <div class="placeholder-art">
+                <svg viewBox="0 0 64 64" class="placeholder-icon">
+                  <rect x="4" y="4" width="56" height="56" rx="8" />
+                  <circle cx="23" cy="22" r="6" />
+                  <path d="M8 46 L24 30 L34 40 L44 26 L58 46 Z" />
+                </svg>
+              </div>
+              <h3>Foto em breve</h3>
+              <p class="product-desc">
+                Nome, aroma e informações da vela entram aqui.
+              </p>
+            </article>
+
+            <article class="product-card product-card--placeholder reveal">
+              <div class="placeholder-art">
+                <svg viewBox="0 0 64 64" class="placeholder-icon">
+                  <rect x="4" y="4" width="56" height="56" rx="8" />
+                  <circle cx="23" cy="22" r="6" />
+                  <path d="M8 46 L24 30 L34 40 L44 26 L58 46 Z" />
+                </svg>
+              </div>
+              <h3>Foto em breve</h3>
+              <p class="product-desc">
+                Nome, aroma e informações da vela entram aqui.
+              </p>
+            </article>
+
+            <article class="product-card product-card--placeholder reveal">
+              <div class="placeholder-art">
+                <svg viewBox="0 0 64 64" class="placeholder-icon">
+                  <rect x="4" y="4" width="56" height="56" rx="8" />
+                  <circle cx="23" cy="22" r="6" />
+                  <path d="M8 46 L24 30 L34 40 L44 26 L58 46 Z" />
+                </svg>
+              </div>
+              <h3>Foto em breve</h3>
+              <p class="product-desc">
+                Nome, aroma e informações da vela entram aqui.
+              </p>
+            </article>
+          </div>
+
+          <p class="catalog-note">
+            ✦ Catálogo em atualização — em breve com fotos oficiais dos produtos
+            ✦
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== DIFERENCIAIS ===== -->
+      <section id="diferenciais" class="differentials">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Diferenciais</span>
+            <h2>Por que escolher a Velas Dominus</h2>
+          </div>
+
+          <div class="diff-grid">
+            <div class="diff-card reveal">
+              <h3>Processo 100% artesanal</h3>
+              <p>
+                Da cera derretida ao rótulo colado, tudo é feito à mão, em
+                pequenos lotes.
+              </p>
+            </div>
+            <div class="diff-card reveal">
+              <h3>Matéria-prima selecionada</h3>
+              <p>
+                Ceras e fragrâncias escolhidas a dedo, priorizando qualidade e
+                queima limpa.
+              </p>
+            </div>
+            <div class="diff-card reveal">
+              <h3>Personalização</h3>
+              <p>
+                Rótulos, aromas e tamanhos podem ser ajustados para presentes e
+                eventos especiais.
+              </p>
+            </div>
+            <div class="diff-card reveal">
+              <h3>Embalagem especial</h3>
+              <p>
+                Cada vela chega embalada com o mesmo cuidado com que foi feita.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CONTATO ===== -->
+      <section id="contato" class="contact">
+        <div class="container contact-inner reveal">
+          <span class="section-eyebrow">Contato</span>
+          <h2>Vamos iluminar seu ambiente?</h2>
+          <p>
+            Fale com a gente pelo WhatsApp — tiramos dúvidas, ajudamos a
+            escolher a vela ideal e combinamos entrega ou retirada.
+          </p>
+          <a
+            href="https://wa.me/5500000000000"
+            target="_blank"
+            rel="noopener"
+            data-wa-msg="Olá! Vim do site da Velas Dominus e queria saber mais."
+            class="js-whatsapp-link btn btn-whatsapp btn-large"
+          >
+            <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3Z"
+              />
+              <path
+                d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.2 15 3.7 13.5 3.7 12c0-4.6 3.7-8.3 8.3-8.3S20.3 7.4 20.3 12s-3.7 8.2-8.3 8.2Z"
+              />
+            </svg>
+            Falar no WhatsApp
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a href="#inicio" class="logo small">Velas <span>Dominus</span></a>
+        <p>
+          &copy; <span id="year"></span> Velas Dominus — feito à mão, com fogo e
+          propósito.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Mascote fixo, sempre visível -->
+    <div class="mascot-companion" aria-hidden="true">
+      <svg
+        class="mascot-svg"
+        viewBox="0 0 100 160"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <ellipse class="mascot-shadow" cx="50" cy="153" rx="24" ry="5" />
+        <g class="mascot-flame-group">
+          <path
+            class="mascot-flame-outer"
+            d="M50 28 C 40 44, 37 58, 50 69 C 63 58, 60 44, 50 28 Z"
+          />
+          <path
+            class="mascot-flame-inner"
+            d="M50 41 C 45 49, 44 57, 50 63 C 56 57, 55 49, 50 41 Z"
+          />
+        </g>
+        <rect
+          class="mascot-wick"
+          x="48.3"
+          y="59"
+          width="3.4"
+          height="11"
+          rx="1.5"
+        />
+        <g class="mascot-arm mascot-arm--left">
+          <path d="M30 100 C 14 94, 7 104, 9 114" />
+          <circle cx="9" cy="115" r="4.2" />
+        </g>
+        <g class="mascot-arm mascot-arm--right">
+          <path d="M70 100 C 86 94, 93 104, 91 114" />
+          <circle cx="91" cy="115" r="4.2" />
+        </g>
+        <path
+          class="mascot-body"
+          d="M30 70 C 28 65 30 62 34 60 L66 60 C70 62 72 65 70 70 L74 145 C74 152 66 156 50 156 C34 156 26 152 26 145 Z"
+        />
+        <path class="mascot-body-highlight" d="M37 70 C 36 100 37 130 41 150" />
+        <g class="mascot-face">
+          <g class="mascot-eye mascot-eye--left">
+            <circle cx="42" cy="96" r="4" />
+          </g>
+          <g class="mascot-eye mascot-eye--right">
+            <circle cx="58" cy="96" r="4" />
+          </g>
+          <path class="mascot-mouth" d="M44 107 Q50 112 56 107" />
+          <circle
+            class="mascot-cheek mascot-cheek--left"
+            cx="35"
+            cy="103"
+            r="3"
+          />
+          <circle
+            class="mascot-cheek mascot-cheek--right"
+            cx="65"
+            cy="103"
+            r="3"
+          />
+        </g>
+      </svg>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
