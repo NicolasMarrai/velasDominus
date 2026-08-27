@@ -118,6 +118,42 @@
     });
   }
 
+  /* ---------- Vídeos do catálogo: só carregam perto de entrar na tela ---------- */
+  const catalogVideos = document.querySelectorAll('.product-video');
+  if (catalogVideos.length) {
+    const loadAndPlay = (video) => {
+      video.querySelectorAll('source[data-src]').forEach((source) => {
+        source.src = source.dataset.src;
+        source.removeAttribute('data-src');
+      });
+      video.load();
+      // quem prefere menos movimento fica só com o poster (1º frame), sem autoplay
+      if (!prefersReducedMotion) {
+        video.play().catch(() => {
+          /* navegador pode bloquear o play() programático — o autoplay do
+             próprio <video> (muted) já cobre a maioria dos casos */
+        });
+      }
+    };
+
+    if ('IntersectionObserver' in window) {
+      const videoObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              loadAndPlay(entry.target);
+              videoObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { rootMargin: '200px 0px' }
+      );
+      catalogVideos.forEach((video) => videoObserver.observe(video));
+    } else {
+      catalogVideos.forEach(loadAndPlay);
+    }
+  }
+
   /* ---------- Mascote: pode ser arrastada pra qualquer lugar da tela ---------- */
   const mascot = document.querySelector('.mascot-companion');
   if (mascot) {

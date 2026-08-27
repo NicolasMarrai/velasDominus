@@ -54,6 +54,8 @@ h1, h2, h3 {
   color: var(--serene-gold);
   margin: 0 0 .5em;
   letter-spacing: .01em;
+  /* leve brilho quente, como se o dourado do texto pegasse luz de vela */
+  text-shadow: 0 0 16px rgba(232,184,75,.18);
 }
 
 p { margin: 0 0 1em; }
@@ -171,7 +173,7 @@ p { margin: 0 0 1em; }
 .logo-img {
   height: 2.3em;
   width: auto;
-  filter: drop-shadow(0 0 6px rgba(232,184,75,.4));
+  filter: drop-shadow(0 0 8px rgba(232,184,75,.55));
 }
 
 .nav-links {
@@ -263,10 +265,11 @@ p { margin: 0 0 1em; }
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse 46% 42% at 50% 46%, rgba(232,184,75,.09), transparent 72%);
+  background: radial-gradient(ellipse 50% 46% at 50% 40%, rgba(232,184,75,.15), transparent 72%);
 }
 
-/* escurece o centro/topo da foto pra garantir legibilidade do título, suaviza nas bordas */
+/* escurece o centro/topo da foto pra garantir legibilidade do título, suaviza nas bordas —
+   um pouco mais claro que antes, pra deixar mais da luz quente da foto passar */
 .hero::after {
   content: '';
   position: absolute;
@@ -274,10 +277,10 @@ p { margin: 0 0 1em; }
   pointer-events: none;
   background: radial-gradient(
     ellipse 70% 62% at 50% 38%,
-    rgba(20,22,31,.88) 0%,
-    rgba(20,22,31,.6) 45%,
-    rgba(20,22,31,.25) 75%,
-    rgba(20,22,31,.08) 100%
+    rgba(20,22,31,.78) 0%,
+    rgba(20,22,31,.5) 45%,
+    rgba(20,22,31,.2) 75%,
+    rgba(20,22,31,.06) 100%
   );
 }
 
@@ -336,6 +339,7 @@ p { margin: 0 0 1em; }
   text-transform: uppercase;
   font-size: .8rem;
   margin-bottom: 20px;
+  text-shadow: 0 0 12px rgba(217,130,30,.3);
 }
 
 .hero-title {
@@ -363,7 +367,7 @@ p { margin: 0 0 1em; }
 .hero-candle-svg { width: 100%; height: 100%; overflow: visible; }
 
 .hc-glow {
-  fill: rgba(252,231,176,.4);
+  fill: rgba(252,231,176,.5);
   opacity: 0;
   filter: blur(8px);
   transition: opacity .8s ease;
@@ -394,7 +398,7 @@ p { margin: 0 0 1em; }
 /* já não fica sobre a foto — fundo próprio, com um brilho sutil ecoando o
    glow do Hero, pra emendar visualmente sem repetir a imagem */
 .hero-intro {
-  background: radial-gradient(ellipse 60% 60% at 50% 20%, rgba(232,184,75,.07), transparent 70%), var(--serene-bg);
+  background: radial-gradient(ellipse 60% 60% at 50% 20%, rgba(232,184,75,.11), transparent 70%), var(--serene-bg);
   text-align: center;
 }
 .hero-intro-inner {
@@ -412,7 +416,7 @@ p { margin: 0 0 1em; }
 
 .hero-desc-card {
   background: var(--serene-card);
-  border: 1px solid rgba(232,184,75,.14);
+  border: 1px solid rgba(232,184,75,.2);
   border-radius: var(--radius);
   max-width: 600px;
   margin: 0 auto 2em;
@@ -445,6 +449,7 @@ section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
   letter-spacing: .18em;
   font-size: .78rem;
   margin-bottom: 14px;
+  text-shadow: 0 0 12px rgba(217,130,30,.3);
 }
 .section-head h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
 .section-desc { color: var(--serene-text-muted); font-size: 1.05rem; }
@@ -459,7 +464,7 @@ section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
 
 /* ============ ABOUT ============ */
 .about {
-  background: var(--serene-bg);
+  background: radial-gradient(ellipse 55% 50% at 50% 0%, rgba(232,184,75,.06), transparent 70%), var(--serene-bg);
 }
 
 .about-top {
@@ -535,7 +540,7 @@ section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
 }
 .value-card {
   background: var(--serene-card);
-  border: 1px solid rgba(232,184,75,.14);
+  border: 1px solid rgba(232,184,75,.2);
   border-radius: var(--radius);
   padding: 24px 18px;
   text-align: center;
@@ -547,7 +552,9 @@ section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
 @keyframes twinkle { 0%,100% { opacity: .2; transform: scale(.7); } 50% { opacity: 1; transform: scale(1); } }
 
 /* ============ CATALOG ============ */
-.catalog { background: var(--serene-bg); }
+.catalog {
+  background: radial-gradient(ellipse 60% 50% at 50% 15%, rgba(217,130,30,.08), transparent 70%), var(--serene-bg);
+}
 .catalog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -556,7 +563,7 @@ section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
 
 .product-card {
   background: var(--serene-card);
-  border: 1px solid rgba(232,184,75,.14);
+  border: 1px solid rgba(232,184,75,.2);
   border-radius: var(--radius);
   padding: 30px 24px 28px;
   text-align: center;
@@ -579,9 +586,60 @@ section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
   justify-content: center;
   background: rgba(0,0,0,.15);
 }
+
+/* vídeo real do produto (Vela Palito / Vela de 7 Dias) — proporção retrato
+   igual à do arquivo enviado, ocupando o mesmo espaço que a foto/placeholder */
+.product-media {
+  width: 100%;
+  /* meio-termo entre o retrato bem alongado do vídeo original e a caixa
+     4:3 (que ficou baixa demais) — o vídeo é cortado (object-fit: cover)
+     pra caber nessa proporção */
+  aspect-ratio: 3 / 4;
+  margin: 0 auto 18px;
+  border-radius: calc(var(--radius) - 4px);
+  overflow: hidden;
+  background: #0c0d13;
+}
+.product-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  display: block;
+}
 .placeholder-icon { width: 40%; height: 40%; opacity: .65; }
 .placeholder-icon rect { fill: none; stroke: var(--serene-amber); stroke-width: 2.5; stroke-dasharray: 6 5; }
 .placeholder-icon circle, .placeholder-icon path { fill: var(--serene-amber); opacity: .85; }
+
+/* chama animada nos ícones temporários do catálogo — mesmo tremular das
+   outras chamas do site (mascote, vela do Sobre) */
+.card-flame {
+  transform-origin: 50% 85%;
+  animation: flame-flicker 2.1s ease-in-out infinite;
+}
+.card-flame path {
+  fill: var(--serene-gold);
+  opacity: 1;
+  filter: drop-shadow(0 0 5px rgba(217,130,30,.75));
+}
+/* pequena defasagem entre os cards pra não tremularem todos em uníssono */
+.catalog-grid .product-card:nth-child(2) .card-flame { animation-delay: .4s; }
+.catalog-grid .product-card:nth-child(3) .card-flame { animation-delay: .8s; }
+
+/* fiapos de aroma subindo, só no card da vela aromatizada */
+.card-aroma {
+  fill: none;
+  stroke: var(--serene-amber);
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: .5;
+  animation: aroma-drift 3.2s ease-in-out infinite;
+}
+.card-aroma--2 { animation-delay: .6s; }
+@keyframes aroma-drift {
+  0%, 100% { transform: translateY(0); opacity: .3; }
+  50% { transform: translateY(-4px); opacity: .7; }
+}
 
 .product-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
 .product-desc { color: var(--serene-text-muted); font-size: .92rem; margin-bottom: 18px; }
@@ -618,7 +676,9 @@ section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
 .catalog-note-link:hover { color: var(--serene-gold-light); }
 
 /* ============ DIFFERENTIALS ============ */
-.differentials { background: var(--serene-bg); }
+.differentials {
+  background: radial-gradient(ellipse 55% 50% at 50% 10%, rgba(232,184,75,.07), transparent 70%), var(--serene-bg);
+}
 .diff-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -626,7 +686,7 @@ section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
 }
 .diff-card {
   background: var(--serene-card);
-  border: 1px solid rgba(232,184,75,.14);
+  border: 1px solid rgba(232,184,75,.2);
   border-radius: var(--radius);
   padding: 34px 26px;
   text-align: center;
@@ -638,7 +698,7 @@ section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
 
 /* ============ CONTACT ============ */
 .contact {
-  background: radial-gradient(ellipse 55% 45% at 50% 40%, rgba(217,130,30,.14), transparent 72%), var(--serene-bg);
+  background: radial-gradient(ellipse 55% 45% at 50% 40%, rgba(217,130,30,.19), transparent 72%), var(--serene-bg);
   text-align: center;
 }
 .contact-inner { max-width: 620px; }
@@ -707,7 +767,7 @@ section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
   transform-origin: 50% 92%;
   animation: flame-flicker 2.2s ease-in-out infinite;
 }
-.mascot-flame-outer { fill: var(--serene-amber); filter: drop-shadow(0 0 8px rgba(217,130,30,.6)); }
+.mascot-flame-outer { fill: var(--serene-amber); filter: drop-shadow(0 0 10px rgba(217,130,30,.75)); }
 .mascot-flame-inner { fill: var(--serene-gold); }
 
 @keyframes flame-flicker {
