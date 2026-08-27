@@ -289,7 +289,9 @@ p { margin: 0 0 1em; }
   position: relative;
   z-index: 2;
   max-width: 720px;
-  padding: 80px 0;
+  /* horizontal igual ao .container (mesmo elemento, essa regra vem depois e
+     sobrescreveria o gutter lateral se fosse só "80px 0") */
+  padding: 80px 24px;
 }
 
 /* faíscas decorativas ao lado do título, tipo cartaz — fora do fluxo do texto
@@ -434,29 +436,32 @@ section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
 }
 
 .about-top {
+  position: relative;
+  z-index: 0; /* contém o ::before (z-index:-1) aqui dentro, em vez de deixar
+                 ele vazar pra trás de tudo (mesmo problema já visto no Hero) */
   display: flex;
   align-items: center;
   gap: 64px;
   margin-bottom: 48px;
 }
-
-.about-copy {
-  position: relative;
-  flex: 1;
-  min-width: 0;
-}
-/* glow narrativo, só aparece quando a vela ao lado é acesa */
-.about-copy::before {
+/* glow narrativo cobrindo toda a área "Nossa história" (texto + vela), não só
+   o texto — mesmo estilo/intensidade do glow da seção Contato */
+.about-top::before {
   content: '';
   position: absolute;
-  inset: -44px -32px;
+  inset: -40px -32px;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(ellipse 60% 50% at 45% 40%, rgba(217,130,30,.14), transparent 72%);
+  background: radial-gradient(ellipse 62% 60% at 42% 45%, rgba(217,130,30,.22), transparent 72%);
   opacity: 0;
   transition: opacity 1.1s ease;
 }
-.about-top.is-lit .about-copy::before { opacity: 1; }
+.about-top.is-lit::before { opacity: 1; }
+
+.about-copy {
+  flex: 1;
+  min-width: 0;
+}
 
 .about-copy p { color: var(--serene-text-muted); }
 
@@ -731,7 +736,12 @@ section { position: relative; padding: 140px 0; scroll-margin-top: 90px; }
   }
   .about-copy { text-align: center; }
   .about-copy p { text-align: left; }
-  .about-copy::before { inset: -28px -16px; }
+  /* pilha vela-em-cima/texto-embaixo: glow mais largo e um pouco mais baixo
+     pra cobrir bem as duas partes empilhadas */
+  .about-top::before {
+    inset: -24px -16px;
+    background: radial-gradient(ellipse 92% 58% at 50% 55%, rgba(217,130,30,.22), transparent 72%);
+  }
 }
 
 @media (max-width: 760px) {
