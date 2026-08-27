@@ -78,20 +78,31 @@
     }
   }
 
-  /* ---------- Vela do Hero: acende e revela o restante do conteúdo ---------- */
-  // Sempre começa apagada a cada visita/carregamento — o aceso é sempre um gesto do visitante.
-  const heroCandle = document.getElementById('heroCandle');
-  const heroCandleWrap = document.getElementById('heroCandleWrap');
-  const heroReveal = document.getElementById('heroReveal');
+  /* ---------- Vela da seção Sobre: acende um glow narrativo atrás do texto ---------- */
+  const aboutCandle = document.getElementById('aboutCandle');
+  const aboutTop = document.getElementById('aboutTop');
+  const aboutInvite = document.getElementById('aboutInvite');
+  const ABOUT_CANDLE_KEY = 'velaDominusAboutLit';
+  const ABOUT_INVITE_UNLIT = 'Acenda a vela e desperte a magia';
+  const ABOUT_INVITE_LIT = 'A magia despertou';
 
-  if (heroCandle && heroCandleWrap && heroReveal) {
-    heroCandle.addEventListener('click', () => {
-      const lit = !heroCandle.classList.contains('is-lit');
-      heroCandle.classList.toggle('is-lit', lit);
-      heroCandleWrap.classList.toggle('is-lit', lit);
-      heroReveal.classList.toggle('is-lit', lit);
-      heroCandle.setAttribute('aria-pressed', String(lit));
-      heroCandle.setAttribute('aria-label', lit ? 'Apagar a vela' : 'Acender a vela');
+  if (aboutCandle && aboutTop && aboutInvite) {
+    const setLit = (lit) => {
+      aboutCandle.classList.toggle('is-lit', lit);
+      aboutTop.classList.toggle('is-lit', lit);
+      aboutCandle.setAttribute('aria-pressed', String(lit));
+      aboutCandle.setAttribute('aria-label', lit ? 'Apagar a vela' : 'Acender a vela');
+      aboutInvite.textContent = lit ? ABOUT_INVITE_LIT : ABOUT_INVITE_UNLIT;
+    };
+
+    if (localStorage.getItem(ABOUT_CANDLE_KEY) === '1') {
+      setLit(true);
+    }
+
+    aboutCandle.addEventListener('click', () => {
+      const lit = !aboutCandle.classList.contains('is-lit');
+      setLit(lit);
+      localStorage.setItem(ABOUT_CANDLE_KEY, lit ? '1' : '0');
     });
   }
 })();

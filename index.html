@@ -60,61 +60,24 @@
             <span class="title-line title-line--accent">Dominus</span>
           </h1>
 
-          <div class="hero-candle-wrap" id="heroCandleWrap">
-            <div class="hero-invite" id="heroInvite">
-              Clique para Acender a vela e despertar a magia
-            </div>
-            <button
-              id="heroCandle"
-              class="hero-candle"
-              aria-label="Acender ou apagar a vela"
-              aria-pressed="false"
-            >
-              <svg
-                class="hero-candle-svg"
-                viewBox="0 0 100 140"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <ellipse class="hc-glow" cx="50" cy="45" rx="46" ry="46" />
-                <g class="hc-flame-group">
-                  <path
-                    class="hc-flame-outer"
-                    d="M50 8 C 36 26 32 42 50 56 C 68 42 64 26 50 8 Z"
-                  />
-                  <path
-                    class="hc-flame-inner"
-                    d="M50 24 C 44 33 43 43 50 50 C 57 43 56 33 50 24 Z"
-                  />
-                </g>
-                <rect class="hc-wick" x="48" y="46" width="4" height="12" rx="2" />
-                <path
-                  class="hc-body"
-                  d="M28 58 L72 58 L77 122 C77 130 65 136 50 136 C35 136 23 130 23 122 Z"
-                />
-                <path class="hc-body-highlight" d="M38 58 C 36 90 37 118 42 132" />
-                <ellipse class="hc-plate" cx="50" cy="136" rx="34" ry="6" />
-              </svg>
-            </button>
-          </div>
-
-          <div class="hero-reveal" id="heroReveal">
-            <p class="hero-tagline">A arte de iluminar seu caminho</p>
+          <p class="hero-tagline">A arte de iluminar seu caminho</p>
+          <div class="hero-desc-card">
             <p class="hero-desc">
               Cada vela nasce do fogo, da cera e de muitas horas de trabalho
               manual — feita para transformar qualquer ambiente em um lugar mais
               quente, mais bonito e mais seu.
             </p>
-            <div class="hero-actions">
-              <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
-              <a
-                href="https://wa.me/5500000000000"
-                target="_blank"
-                rel="noopener"
-                data-wa-msg="Olá! Vim do site da Velas Dominus e queria saber mais."
-                class="js-whatsapp-link btn btn-whatsapp"
-                >Fale no WhatsApp</a
-              >
-            </div>
+          </div>
+          <div class="hero-actions">
+            <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
+            <a
+              href="https://wa.me/5500000000000"
+              target="_blank"
+              rel="noopener"
+              data-wa-msg="Olá! Vim do site da Velas Dominus e queria saber mais."
+              class="js-whatsapp-link btn btn-whatsapp"
+              >Fale no WhatsApp</a
+            >
           </div>
         </div>
       </section>
@@ -122,47 +85,87 @@
       <!-- ===== SOBRE ===== -->
       <section id="sobre" class="about">
         <div class="container">
-          <div class="about-text reveal">
-            <span class="section-eyebrow">Nossa história</span>
-            <h2>Sobre a Velas Dominus</h2>
-            <!-- Texto baseado no relato do cliente sobre a origem da marca — revisar/aprovar com ele antes de publicar -->
+          <div class="about-top reveal" id="aboutTop">
+            <div class="about-copy">
+              <span class="section-eyebrow">Nossa história</span>
+              <h2>Sobre a Velas Dominus</h2>
+              <!-- Texto baseado no relato do cliente sobre a origem da marca — revisar/aprovar com ele antes de publicar -->
 
-            <p>
-              Uma vela é mais do que decoração: é o momento em que alguém para,
-              respira e coloca ali uma intenção — um pedido, um desejo, uma
-              esperança. Vale pra quem acende uma vela na igreja, pra quem segue
-              o candomblé, a umbanda ou qualquer outro caminho de fé, e vale pra
-              quem só quer um instante seu, sem religião nenhuma envolvida.
-            </p>
-            <p>
-              Na imensa maioria das vezes, o pedido é simples: saúde, paz, que
-              as coisas deem certo. É esse sentimento — de cuidado, intenção e
-              leveza — que a gente tenta colocar em cada vela que sai da nossa
-              oficina.
-            </p>
-            <div class="about-values">
-              <div class="value-card">
-                <span class="value-icon">🔥</span>
-                <h3>Intenção</h3>
-                <p>
-                  Cada vela carrega um propósito: um pedido, um desejo, uma
-                  pausa no meio do dia.
-                </p>
+              <p>
+                Uma vela é mais do que decoração: é o momento em que alguém para,
+                respira e coloca ali uma intenção — um pedido, um desejo, uma
+                esperança. Vale pra quem acende uma vela na igreja, pra quem segue
+                o candomblé, a umbanda ou qualquer outro caminho de fé, e vale pra
+                quem só quer um instante seu, sem religião nenhuma envolvida.
+              </p>
+              <p>
+                Na imensa maioria das vezes, o pedido é simples: saúde, paz, que
+                as coisas deem certo. É esse sentimento — de cuidado, intenção e
+                leveza — que a gente tenta colocar em cada vela que sai da nossa
+                oficina.
+              </p>
+            </div>
+
+            <div class="about-candle-wrap">
+              <div class="about-invite" id="aboutInvite">
+                Acenda a vela e desperte a magia
               </div>
-              <div class="value-card">
-                <span class="value-icon">🕊️</span>
-                <h3>Todos os caminhos</h3>
-                <p>
-                  Há uma vela para cada momento, cada intenção e cada caminho.
-                </p>
-              </div>
-              <div class="value-card">
-                <span class="value-icon">✨</span>
-                <h3>Leveza</h3>
-                <p>
-                  Um pouco de calma pra um mundo que já é cinza e pesado demais.
-                </p>
-              </div>
+              <button
+                id="aboutCandle"
+                class="hero-candle"
+                aria-label="Acender a vela"
+                aria-pressed="false"
+              >
+                <svg
+                  class="hero-candle-svg"
+                  viewBox="0 0 100 140"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <ellipse class="hc-glow" cx="50" cy="45" rx="46" ry="46" />
+                  <g class="hc-flame-group">
+                    <path
+                      class="hc-flame-outer"
+                      d="M50 8 C 36 26 32 42 50 56 C 68 42 64 26 50 8 Z"
+                    />
+                    <path
+                      class="hc-flame-inner"
+                      d="M50 24 C 44 33 43 43 50 50 C 57 43 56 33 50 24 Z"
+                    />
+                  </g>
+                  <rect class="hc-wick" x="48" y="46" width="4" height="12" rx="2" />
+                  <path
+                    class="hc-body"
+                    d="M28 58 L72 58 L77 122 C77 130 65 136 50 136 C35 136 23 130 23 122 Z"
+                  />
+                  <path class="hc-body-highlight" d="M38 58 C 36 90 37 118 42 132" />
+                  <ellipse class="hc-plate" cx="50" cy="136" rx="34" ry="6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="about-values">
+            <div class="value-card">
+              <span class="value-icon">🔥</span>
+              <h3>Intenção</h3>
+              <p>
+                Cada vela carrega um propósito: um pedido, um desejo, uma
+                pausa no meio do dia.
+              </p>
+            </div>
+            <div class="value-card">
+              <span class="value-icon">🕊️</span>
+              <h3>Todos os caminhos</h3>
+              <p>
+                Há uma vela para cada momento, cada intenção e cada caminho.
+              </p>
+            </div>
+            <div class="value-card">
+              <span class="value-icon">✨</span>
+              <h3>Leveza</h3>
+              <p>
+                Um pouco de calma pra um mundo que já é cinza e pesado demais.
+              </p>
             </div>
           </div>
         </div>
@@ -319,7 +322,10 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <a href="#inicio" class="logo small">Velas <span>Dominus</span></a>
+        <a href="#inicio" class="logo small">
+          <img src="assets/logo.png" alt="" class="logo-img" />
+          Velas <span>Dominus</span>
+        </a>
         <p>
           &copy; <span id="year"></span> Velas Dominus — feito à mão, com fogo e
           propósito.
