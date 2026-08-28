@@ -231,7 +231,17 @@ p { margin: 0 0 1em; }
 .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ============ HERO ============ */
+/* paleta de teste, isolada só no Hero — o resto do site continua na paleta
+   serena (--serene-*). Se for aprovada, aí sim expandimos pro site inteiro. */
 .hero {
+  --hero-bg: #3d2b1f;
+  --hero-card: #4a3826;
+  --hero-text: #f5e9d3;
+  --hero-text-muted: #c9b896;
+  --hero-gold: #f2b84c;
+  --hero-amber: #e8791e;
+  --hero-gold-light: #ffe4a3;
+
   position: relative;
   z-index: 0; /* cria um contexto de empilhamento local, pra .hero-bg (z-index:-1) não vazar pra trás da página inteira */
   min-height: 100vh;
@@ -242,7 +252,7 @@ p { margin: 0 0 1em; }
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  background: var(--serene-bg);
+  background: var(--hero-bg);
 }
 
 /* foto de fundo como <img> real (melhor performance/LCP que background-image),
@@ -265,11 +275,11 @@ p { margin: 0 0 1em; }
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse 50% 46% at 50% 40%, rgba(232,184,75,.15), transparent 72%);
+  background: radial-gradient(ellipse 50% 46% at 50% 40%, rgba(242,184,76,.16), transparent 72%);
 }
 
 /* escurece o centro/topo da foto pra garantir legibilidade do título, suaviza nas bordas —
-   um pouco mais claro que antes, pra deixar mais da luz quente da foto passar */
+   base marrom (--hero-bg) pra combinar com a foto nova, mais clara/quente */
 .hero::after {
   content: '';
   position: absolute;
@@ -277,10 +287,10 @@ p { margin: 0 0 1em; }
   pointer-events: none;
   background: radial-gradient(
     ellipse 70% 62% at 50% 38%,
-    rgba(20,22,31,.78) 0%,
-    rgba(20,22,31,.5) 45%,
-    rgba(20,22,31,.2) 75%,
-    rgba(20,22,31,.06) 100%
+    rgba(61,43,31,.82) 0%,
+    rgba(61,43,31,.55) 45%,
+    rgba(61,43,31,.24) 75%,
+    rgba(61,43,31,.08) 100%
   );
 }
 
@@ -293,8 +303,8 @@ p { margin: 0 0 1em; }
 .spark {
   position: absolute;
   border-radius: 50%;
-  background: var(--serene-gold-light);
-  box-shadow: 0 0 6px 1px rgba(252,231,176,.5);
+  background: var(--hero-gold-light);
+  box-shadow: 0 0 6px 1px rgba(255,228,163,.5);
   opacity: 0;
   animation: sparkle-float linear infinite;
 }
@@ -320,10 +330,10 @@ p { margin: 0 0 1em; }
    para não desalinhar as duas linhas do nome */
 .title-spark {
   position: absolute;
-  color: var(--serene-gold-light);
+  color: var(--hero-gold-light);
   font-size: .5em;
   opacity: .7;
-  text-shadow: 0 0 10px rgba(252,231,176,.5);
+  text-shadow: 0 0 10px rgba(255,228,163,.5);
   animation: twinkle 2.4s ease-in-out infinite;
 }
 .title-spark--1 { top: 6%; left: -6%; }
@@ -334,12 +344,12 @@ p { margin: 0 0 1em; }
 
 .eyebrow {
   font-family: var(--font-heading);
-  color: var(--serene-amber);
+  color: var(--hero-amber);
   letter-spacing: .18em;
   text-transform: uppercase;
   font-size: .8rem;
   margin-bottom: 20px;
-  text-shadow: 0 0 12px rgba(217,130,30,.3);
+  text-shadow: 0 0 12px rgba(232,121,30,.35);
 }
 
 .hero-title {
@@ -347,12 +357,12 @@ p { margin: 0 0 1em; }
   font-family: var(--font-display);
   font-size: clamp(2.6rem, 7vw, 5rem);
   line-height: 1.05;
-  color: var(--serene-text);
-  text-shadow: 0 0 30px rgba(232,184,75,.16);
+  color: var(--hero-text);
+  text-shadow: 0 0 30px rgba(242,184,76,.2);
   margin-bottom: .55em;
 }
 .title-line { display: block; }
-.title-line--accent { color: var(--serene-gold); }
+.title-line--accent { color: var(--hero-gold); }
 
 /* ---- vela interativa (usada na seção Sobre) ---- */
 .hero-candle {
