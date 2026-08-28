@@ -285,139 +285,123 @@
             <span class="section-eyebrow">Catálogo</span>
             <h2>Nossas velas</h2>
             <p class="section-desc">
-              Nossos três tipos de vela, em sua cor padrão. Todas podem ser
-              personalizadas — é só chamar no WhatsApp.
+              Nossos dois tipos de vela, cada um em três variações de cor.
+              Também fazemos aromatizadas — é só chamar no WhatsApp.
             </p>
           </div>
 
           <!--
-            Vela Palito e Vela de 7 Dias já usam vídeo real do produto
-            (.product-media/.product-video). A Vela Aromatizada ainda não
-            tem foto/vídeo enviado pelo cliente — continua com a ilustração
-            temporária (.placeholder-art); troque pelo <img> real quando
-            chegar (ver comentário TODO dentro do card).
+            Fotos reais dos produtos. Cada card tem 1 foto principal + 2
+            variações de cor selecionáveis (.product-variant). Clicar numa
+            variação troca a foto principal (ver observeCatalogVariants em
+            js/main.js). Passar o mouse (desktop) ou tocar na foto (mobile)
+            revela as variações.
           -->
           <div class="catalog-grid">
-            <article class="product-card reveal">
+            <article class="product-card reveal" data-product-card>
               <div class="product-media">
-                <!-- vídeo real do produto: carrega só quando o card chega perto da tela (ver observeCatalogVideos em js/main.js) -->
-                <video
-                  class="product-video"
-                  poster="image/vela-palito-poster.jpg"
-                  muted
-                  loop
-                  playsinline
-                  preload="none"
-                  aria-hidden="true"
-                >
-                  <source data-src="video/vela-palito.webm" type="video/webm" />
-                  <source data-src="video/vela-palito.mp4" type="video/mp4" />
-                </video>
+                <img
+                  class="product-media-img"
+                  src="image/velas/vela-branca.jpg"
+                  alt="Vela Palito branca"
+                  width="700"
+                  height="990"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="product-media-hint">Toque para ver outras cores</span>
+                <div class="product-variants" role="group" aria-label="Cores disponíveis da Vela Palito">
+                  <button
+                    type="button"
+                    class="product-variant is-active"
+                    data-full="image/velas/vela-branca.jpg"
+                    data-alt="Vela Palito branca"
+                  >
+                    <img src="image/velas/vela-branca.jpg" alt="" loading="lazy" />
+                  </button>
+                  <button
+                    type="button"
+                    class="product-variant"
+                    data-full="image/velas/vela-palito-preta-branco.jpg"
+                    data-alt="Vela Palito preta e branca"
+                  >
+                    <img src="image/velas/vela-palito-preta-branco.jpg" alt="" loading="lazy" />
+                  </button>
+                  <button
+                    type="button"
+                    class="product-variant"
+                    data-full="image/velas/vela-palito-preta-verelho.jpg"
+                    data-alt="Vela Palito preta e vermelha"
+                  >
+                    <img src="image/velas/vela-palito-preta-verelho.jpg" alt="" loading="lazy" />
+                  </button>
+                </div>
               </div>
               <h3>Vela Palito</h3>
               <p class="product-desc">
                 Vela artesanal palito, feita à mão, com queima limpa e
                 duradoura.
               </p>
-              <a
-                href="https://wa.me/5500000000000"
-                target="_blank"
-                rel="noopener"
-                data-wa-msg="Olá! Gostaria de personalizar a cor da Vela Palito. Quais cores vocês têm disponíveis?"
-                class="js-whatsapp-link btn btn-outline-gold"
-              >
-                <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3Z"
-                  />
-                  <path
-                    d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.2 15 3.7 13.5 3.7 12c0-4.6 3.7-8.3 8.3-8.3S20.3 7.4 20.3 12s-3.7 8.2-8.3 8.2Z"
-                  />
-                </svg>
-                Personalizar cor
-              </a>
+              <div class="product-perks">
+                <span class="product-perks-label">Personalizamos:</span>
+                <ul class="product-perks-list">
+                  <li>Cor</li>
+                  <li>Aroma</li>
+                </ul>
+              </div>
             </article>
 
-            <article class="product-card reveal">
+            <article class="product-card reveal" data-product-card>
               <div class="product-media">
-                <!-- vídeo real do produto: carrega só quando o card chega perto da tela (ver observeCatalogVideos em js/main.js) -->
-                <video
-                  class="product-video"
-                  poster="image/vela-7dias-poster.jpg"
-                  muted
-                  loop
-                  playsinline
-                  preload="none"
-                  aria-hidden="true"
-                >
-                  <source data-src="video/vela-7dias.webm" type="video/webm" />
-                  <source data-src="video/vela-7dias.mp4" type="video/mp4" />
-                </video>
+                <img
+                  class="product-media-img"
+                  src="image/velas/vela-7dias-branca.jpg"
+                  alt="Vela de 7 Dias branca"
+                  width="700"
+                  height="700"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="product-media-hint">Toque para ver outras cores</span>
+                <div class="product-variants" role="group" aria-label="Cores disponíveis da Vela de 7 Dias">
+                  <button
+                    type="button"
+                    class="product-variant is-active"
+                    data-full="image/velas/vela-7dias-branca.jpg"
+                    data-alt="Vela de 7 Dias branca"
+                  >
+                    <img src="image/velas/vela-7dias-branca.jpg" alt="" loading="lazy" />
+                  </button>
+                  <button
+                    type="button"
+                    class="product-variant"
+                    data-full="image/velas/vela-7dias-preta-verelho.jpg"
+                    data-alt="Vela de 7 Dias preta e vermelha"
+                  >
+                    <img src="image/velas/vela-7dias-preta-verelho.jpg" alt="" loading="lazy" />
+                  </button>
+                  <button
+                    type="button"
+                    class="product-variant"
+                    data-full="image/velas/vela-7dias-rosa-azul.jpg"
+                    data-alt="Vela de 7 Dias rosa e azul"
+                  >
+                    <img src="image/velas/vela-7dias-rosa-azul.jpg" alt="" loading="lazy" />
+                  </button>
+                </div>
               </div>
               <h3>Vela de 7 Dias</h3>
               <p class="product-desc">
                 Vela de 7 dias, ideal pra acompanhar um pedido ou intenção por
                 mais tempo.
               </p>
-              <a
-                href="https://wa.me/5500000000000"
-                target="_blank"
-                rel="noopener"
-                data-wa-msg="Olá! Gostaria de personalizar a cor da Vela de 7 Dias. Quais cores vocês têm disponíveis?"
-                class="js-whatsapp-link btn btn-outline-gold"
-              >
-                <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3Z"
-                  />
-                  <path
-                    d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.2 15 3.7 13.5 3.7 12c0-4.6 3.7-8.3 8.3-8.3S20.3 7.4 20.3 12s-3.7 8.2-8.3 8.2Z"
-                  />
-                </svg>
-                Personalizar cor
-              </a>
-            </article>
-
-            <article class="product-card reveal">
-              <div class="placeholder-art">
-                <!-- TODO: substituir por <img src="image/vela-aromatizada.jpg" alt="Vela Aromatizada" loading="lazy"> com a foto real -->
-                <svg
-                  viewBox="0 0 64 64"
-                  class="placeholder-icon"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M16 34 L46 34 L44 56 Q44 60 40 60 L22 60 Q18 60 18 56 Z"
-                  />
-                  <g class="card-flame">
-                    <path d="M31 16 C 26 22 25 27 31 32 C 37 27 36 22 31 16 Z" />
-                  </g>
-                  <path class="card-aroma card-aroma--1" d="M44 22 C 46 18 44 14 47 10" />
-                  <path class="card-aroma card-aroma--2" d="M50 26 C 52 22 50 18 53 14" />
-                </svg>
+              <div class="product-perks">
+                <span class="product-perks-label">Personalizamos:</span>
+                <ul class="product-perks-list">
+                  <li>Cor</li>
+                  <li>Aroma</li>
+                </ul>
               </div>
-              <h3>Vela Aromatizada</h3>
-              <p class="product-desc">
-                Vela artesanal aromatizada, com fragrâncias selecionadas pra
-                perfumar o ambiente enquanto queima.
-              </p>
-              <a
-                href="https://wa.me/5500000000000"
-                target="_blank"
-                rel="noopener"
-                data-wa-msg="Olá! Gostaria de saber mais sobre as opções de cor e aroma da Vela Aromatizada."
-                class="js-whatsapp-link btn btn-outline-gold"
-              >
-                <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3Z"
-                  />
-                  <path
-                    d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.2 15 3.7 13.5 3.7 12c0-4.6 3.7-8.3 8.3-8.3S20.3 7.4 20.3 12s-3.7 8.2-8.3 8.2Z"
-                  />
-                </svg>
-                Personalizar cor
-              </a>
             </article>
           </div>
 

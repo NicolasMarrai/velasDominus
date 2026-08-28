@@ -118,41 +118,34 @@
     });
   }
 
-  /* ---------- Vídeos do catálogo: só carregam perto de entrar na tela ---------- */
-  const catalogVideos = document.querySelectorAll('.product-video');
-  if (catalogVideos.length) {
-    const loadAndPlay = (video) => {
-      video.querySelectorAll('source[data-src]').forEach((source) => {
-        source.src = source.dataset.src;
-        source.removeAttribute('data-src');
-      });
-      video.load();
-      // quem prefere menos movimento fica só com o poster (1º frame), sem autoplay
-      if (!prefersReducedMotion) {
-        video.play().catch(() => {
-          /* navegador pode bloquear o play() programático — o autoplay do
-             próprio <video> (muted) já cobre a maioria dos casos */
-        });
-      }
-    };
+  /* ---------- Catálogo: variações de cor selecionáveis em cada card ---------- */
+  document.querySelectorAll('[data-product-card]').forEach((card) => {
+    const media = card.querySelector('.product-media');
+    const mainImg = card.querySelector('.product-media-img');
+    const variants = card.querySelectorAll('.product-variant');
+    if (!media || !mainImg || !variants.length) return;
 
-    if ('IntersectionObserver' in window) {
-      const videoObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              loadAndPlay(entry.target);
-              videoObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { rootMargin: '200px 0px' }
-      );
-      catalogVideos.forEach((video) => videoObserver.observe(video));
-    } else {
-      catalogVideos.forEach(loadAndPlay);
-    }
-  }
+    variants.forEach((variant) => {
+      variant.addEventListener('click', () => {
+        const { full, alt } = variant.dataset;
+        if (full) mainImg.src = full;
+        if (alt) mainImg.alt = alt;
+        variants.forEach((v) => v.classList.toggle('is-active', v === variant));
+      });
+    });
+
+    // mobile (sem hover real): tocar na foto abre/fecha a faixa de variações
+    mainImg.addEventListener('click', () => {
+      card.classList.toggle('is-open');
+    });
+  });
+
+  // toca fora de um card aberto fecha a faixa de variações de novo
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll('[data-product-card].is-open').forEach((card) => {
+      if (!card.contains(e.target)) card.classList.remove('is-open');
+    });
+  });
 
   /* ---------- Mascote: pode ser arrastada pra qualquer lugar da tela ---------- */
   const mascot = document.querySelector('.mascot-companion');
