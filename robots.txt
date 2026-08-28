@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.velasdominus.com.br/sitemap.xml
+Sitemap: https://velas-dominus.vercel.app/sitemap.xml
