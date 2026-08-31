@@ -1067,6 +1067,28 @@ section {
   display: block;
 }
 
+/* selo no canto da foto: "todas as cores disponíveis". Dourado sólido com texto
+   escuro — contraste forte tanto sobre a foto clara quanto sobre a cinza, e
+   destaca sem competir com o nome da vela (bem menor, em caixa alta). */
+.product-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  background: var(--serene-gold);
+  color: var(--serene-bg);
+  font-family: var(--font-heading);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(24, 14, 7, 0.4);
+  pointer-events: none;
+}
+
 .product-media-hint {
   position: absolute;
   left: 50%;
@@ -1227,10 +1249,6 @@ section {
   font-family: var(--font-heading);
   font-style: italic;
   font-size: 0.95rem;
-}
-/* quando há dois avisos seguidos (cores + bicolor), aproxima o segundo */
-.catalog-note + .catalog-note {
-  margin-top: 14px;
 }
 .catalog-note-link {
   color: var(--serene-gold);
