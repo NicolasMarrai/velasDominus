@@ -114,25 +114,42 @@
     sparkField.appendChild(frag);
   }
 
-  /* ---------- Vela da seção Sobre: acende um glow narrativo atrás do texto ---------- */
-  // Sempre começa apagada a cada visita/recarregamento — o aceso é sempre um gesto do visitante.
+  /* ---------- Vela da seção Sobre: acende um glow que ilumina todo o card da história ---------- */
+  // O estado (acesa/apagada) é lembrado entre visitas via localStorage.
   const aboutCandle = document.getElementById('aboutCandle');
   const aboutTop = document.getElementById('aboutTop');
   const aboutInvite = document.getElementById('aboutInvite');
   const ABOUT_INVITE_UNLIT = 'Acenda a vela e desperte a magia';
   const ABOUT_INVITE_LIT = 'A magia despertou';
+  const ABOUT_CANDLE_KEY = 'velaDominusAboutCandle';
 
   if (aboutCandle && aboutTop && aboutInvite) {
-    const setLit = (lit) => {
+    const setLit = (lit, persist) => {
       aboutCandle.classList.toggle('is-lit', lit);
       aboutTop.classList.toggle('is-lit', lit);
       aboutCandle.setAttribute('aria-pressed', String(lit));
       aboutCandle.setAttribute('aria-label', lit ? 'Apagar a vela' : 'Acender a vela');
       aboutInvite.textContent = lit ? ABOUT_INVITE_LIT : ABOUT_INVITE_UNLIT;
+      if (persist) {
+        try {
+          localStorage.setItem(ABOUT_CANDLE_KEY, lit ? 'lit' : 'unlit');
+        } catch (e) {
+          /* localStorage indisponível — segue sem persistir */
+        }
+      }
     };
 
+    // restaura o estado da última visita (se estava acesa, o card já carrega iluminado)
+    let wasLit = false;
+    try {
+      wasLit = localStorage.getItem(ABOUT_CANDLE_KEY) === 'lit';
+    } catch (e) {
+      /* ignore */
+    }
+    if (wasLit) setLit(true, false);
+
     aboutCandle.addEventListener('click', () => {
-      setLit(!aboutCandle.classList.contains('is-lit'));
+      setLit(!aboutCandle.classList.contains('is-lit'), true);
     });
   }
 
