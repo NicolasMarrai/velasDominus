@@ -921,6 +921,97 @@ section {
   }
 }
 
+/* ============ ESSÊNCIA (Missão / Visão / Valores) ============ */
+.essence {
+  background:
+    radial-gradient(
+      ellipse 60% 45% at 50% 12%,
+      rgba(232, 121, 30, 0.08),
+      transparent 70%
+    ),
+    var(--serene-bg);
+}
+
+/* Missão e Visão: dois blocos de texto simétricos lado a lado, cada um com um
+   selo acima. Divisória fina exatamente no centro (pseudo-elemento), sem padding
+   assimétrico — assim os dois lados pesam igual e o bloco fica centrado. */
+.essence-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(36px, 6vw, 72px);
+  max-width: 900px;
+  margin: 0 auto;
+}
+.essence-grid::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  bottom: 8%;
+  width: 1px;
+  background: rgba(242, 184, 76, 0.16);
+}
+
+.essence-block {
+  text-align: center;
+}
+.essence-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(242, 184, 76, 0.1);
+  border: 1px solid rgba(242, 184, 76, 0.28);
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-bottom: 18px;
+}
+.essence-block h3 {
+  color: var(--serene-gold);
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+.essence-block p {
+  color: var(--serene-text);
+  font-size: 1rem;
+  line-height: 1.75;
+  max-width: 42ch;
+  margin: 0 auto;
+}
+
+/* Valores: grade de cartões (pronta pra mais de um) no mesmo estilo dos demais */
+.essence-values {
+  margin-top: clamp(48px, 7vw, 84px);
+  text-align: center;
+}
+.essence-values-title {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  color: var(--serene-amber);
+  margin-bottom: 26px;
+  text-shadow: 0 0 12px rgba(232, 121, 30, 0.3);
+}
+.essence-values-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 22px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+/* mesmo cartão do Sobre/Diferenciais, só com um respiro maior por ser destaque.
+   flex-basis fixo + justify-content:center: 1 cartão fica centrado, e ao
+   adicionar mais eles quebram linha e continuam centrados. */
+.essence-values-grid .value-card {
+  flex: 0 1 320px;
+  padding: 30px 26px;
+}
+
 /* ============ CATALOG ============ */
 .catalog {
   background:
@@ -1439,10 +1530,25 @@ section {
   .about-story p.about-story-close {
     font-size: 1.12rem;
   }
+
+  /* Missão e Visão empilham; troca a divisória vertical central por uma
+     horizontal entre os dois blocos */
+  .essence-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .essence-grid::before {
+    display: none;
+  }
+  .essence-grid > .essence-block:first-child {
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(242, 184, 76, 0.16);
+  }
 }
 
-@media (max-width: 760px) {
-  /* menu compacto tipo dropdown, ancorado no canto — não ocupa a tela toda */
+@media (max-width: 900px) {
+  /* menu compacto tipo dropdown, ancorado no canto — não ocupa a tela toda.
+     Vira hambúrguer já aos 900px pra caber a lista de 6 itens sem estourar. */
   .nav-links {
     position: fixed;
     top: 68px;
@@ -1499,7 +1605,9 @@ section {
     background: rgba(242, 184, 76, 0.1);
     color: var(--serene-gold);
   }
+}
 
+@media (max-width: 760px) {
   section {
     padding: 96px 0;
   }
