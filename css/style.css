@@ -1073,6 +1073,10 @@ section {
   font-style: italic;
   font-size: 0.95rem;
 }
+/* quando há dois avisos seguidos (cores + bicolor), aproxima o segundo */
+.catalog-note + .catalog-note {
+  margin-top: 14px;
+}
 .catalog-note-link {
   color: var(--serene-gold);
   font-weight: 700;
