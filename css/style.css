@@ -384,28 +384,51 @@ p {
   pointer-events: none;
   z-index: 0;
 }
+/* poeira mágica: cada fagulha carrega suas próprias variáveis (--glow, --rise,
+   --drift, --peak), sorteadas no JS, pra que tamanho, brilho, trajeto e
+   distância variem entre elas — sem virar chuvinha vertical uniforme.
+   Só transform/opacity animam (compositor/GPU); o box-shadow é pintado uma vez
+   na camada e só recomposto, então a auréola grande sai barata. */
 .spark {
+  /* fallbacks; o JS sobrescreve por partícula */
+  --glow: 7px;
+  --rise: -130px;
+  --drift: 0px;
+  --peak: 0.85;
+
   position: absolute;
   border-radius: 50%;
   background: var(--hero-gold-light);
-  box-shadow: 0 0 6px 1px rgba(255, 228, 163, 0.5);
+  box-shadow:
+    0 0 var(--glow) calc(var(--glow) * 0.16) rgba(255, 236, 194, 0.9),
+    0 0 calc(var(--glow) * 2.6) calc(var(--glow) * 0.28) rgba(242, 184, 76, 0.5),
+    0 0 calc(var(--glow) * 5) calc(var(--glow) * 0.2) rgba(232, 121, 30, 0.22);
   opacity: 0;
+  will-change: transform, opacity;
   animation: sparkle-float linear infinite;
 }
 @keyframes sparkle-float {
   0% {
     opacity: 0;
-    transform: translateY(0) scale(0.6);
+    transform: translate3d(0, 0, 0) scale(0.4);
   }
-  15% {
-    opacity: 0.5;
+  12% {
+    opacity: var(--peak);
   }
-  85% {
-    opacity: 0.3;
+  50% {
+    transform: translate3d(
+        calc(var(--drift) * 0.45),
+        calc(var(--rise) * 0.5),
+        0
+      )
+      scale(1);
+  }
+  78% {
+    opacity: calc(var(--peak) * 0.45);
   }
   100% {
     opacity: 0;
-    transform: translateY(-120px) scale(1);
+    transform: translate3d(var(--drift), var(--rise), 0) scale(1.08);
   }
 }
 

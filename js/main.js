@@ -81,19 +81,37 @@
   const sparkField = document.getElementById('heroSparkles');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (sparkField && !prefersReducedMotion) {
-    const SPARK_COUNT = 14;
+    // menos partículas no mobile — mais glow + mais elementos pesa numa tela pequena
+    const isSmall = window.matchMedia('(max-width: 640px)').matches;
+    const SPARK_COUNT = isSmall ? 18 : 30;
+    const frag = document.createDocumentFragment();
+
     for (let i = 0; i < SPARK_COUNT; i++) {
       const s = document.createElement('span');
       s.className = 'spark';
-      const size = 2 + Math.random() * 3;
+
+      // ~70% poeira miúda e sutil, ~30% fagulhas maiores e mais brilhantes —
+      // a mistura é o que dá profundidade em vez de um brilho uniforme
+      const bright = Math.random() < 0.3;
+      const size = bright ? 3 + Math.random() * 3 : 1.4 + Math.random() * 2;
+      // glow acompanha o tamanho, com um empurrão extra nas brilhantes
+      const glow = size * (bright ? 3.4 + Math.random() * 2.2 : 1.8 + Math.random() * 1.6);
+
       s.style.width = size + 'px';
       s.style.height = size + 'px';
       s.style.left = Math.random() * 100 + '%';
-      s.style.top = 40 + Math.random() * 55 + '%';
-      s.style.animationDuration = 4 + Math.random() * 5 + 's';
-      s.style.animationDelay = Math.random() * 6 + 's';
-      sparkField.appendChild(s);
+      s.style.top = 35 + Math.random() * 62 + '%';
+      s.style.animationDuration = 4.5 + Math.random() * 6 + 's';
+      s.style.animationDelay = Math.random() * -11 + 's'; // negativo: já começam espalhadas no ciclo, sem "onda" inicial
+
+      s.style.setProperty('--glow', glow.toFixed(1) + 'px');
+      s.style.setProperty('--rise', -(90 + Math.random() * 170).toFixed(0) + 'px');
+      s.style.setProperty('--drift', ((Math.random() - 0.5) * 70).toFixed(0) + 'px');
+      s.style.setProperty('--peak', (bright ? 0.8 + Math.random() * 0.2 : 0.4 + Math.random() * 0.35).toFixed(2));
+
+      frag.appendChild(s);
     }
+    sparkField.appendChild(frag);
   }
 
   /* ---------- Vela da seção Sobre: acende um glow narrativo atrás do texto ---------- */
