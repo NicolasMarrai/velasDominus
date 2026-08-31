@@ -378,11 +378,17 @@ p {
   );
 }
 
-.hero-sparkles {
-  position: absolute;
+/* camada de poeira mágica que cobre o site inteiro: fixa na viewport, então as
+   fagulhas continuam subindo sobre qualquer seção conforme se rola a página.
+   z-index 3 = acima do fundo opaco das seções e do texto, abaixo de header (100),
+   mascote (45), banner de cookies (200). pointer-events:none pra não bloquear
+   cliques. */
+.spark-field {
+  position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  overflow: hidden;
+  z-index: 3;
 }
 /* poeira mágica: cada fagulha carrega suas próprias variáveis (--glow, --rise,
    --drift, --peak), sorteadas no JS, pra que tamanho, brilho, trajeto e

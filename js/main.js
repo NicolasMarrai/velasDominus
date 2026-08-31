@@ -77,13 +77,13 @@
     revealTargets.forEach((el) => el.classList.add('in-view'));
   }
 
-  /* ---------- Fagulhas ambiente no hero ---------- */
-  const sparkField = document.getElementById('heroSparkles');
+  /* ---------- Poeira mágica: camada fixa que cobre o site inteiro ---------- */
+  const sparkField = document.getElementById('sparkField');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (sparkField && !prefersReducedMotion) {
     // menos partículas no mobile — mais glow + mais elementos pesa numa tela pequena
     const isSmall = window.matchMedia('(max-width: 640px)').matches;
-    const SPARK_COUNT = isSmall ? 18 : 30;
+    const SPARK_COUNT = isSmall ? 22 : 38;
     const frag = document.createDocumentFragment();
 
     for (let i = 0; i < SPARK_COUNT; i++) {
@@ -100,13 +100,13 @@
       s.style.width = size + 'px';
       s.style.height = size + 'px';
       s.style.left = Math.random() * 100 + '%';
-      s.style.top = 35 + Math.random() * 62 + '%';
-      s.style.animationDuration = 4.5 + Math.random() * 6 + 's';
-      s.style.animationDelay = Math.random() * -11 + 's'; // negativo: já começam espalhadas no ciclo, sem "onda" inicial
+      s.style.top = Math.random() * 100 + '%'; // espalha na viewport toda
+      s.style.animationDuration = 5 + Math.random() * 7 + 's';
+      s.style.animationDelay = Math.random() * -14 + 's'; // negativo: já começam espalhadas no ciclo, sem "onda" inicial
 
       s.style.setProperty('--glow', glow.toFixed(1) + 'px');
-      s.style.setProperty('--rise', -(90 + Math.random() * 170).toFixed(0) + 'px');
-      s.style.setProperty('--drift', ((Math.random() - 0.5) * 70).toFixed(0) + 'px');
+      s.style.setProperty('--rise', -(120 + Math.random() * 220).toFixed(0) + 'px');
+      s.style.setProperty('--drift', ((Math.random() - 0.5) * 80).toFixed(0) + 'px');
       s.style.setProperty('--peak', (bright ? 0.8 + Math.random() * 0.2 : 0.4 + Math.random() * 0.35).toFixed(2));
 
       frag.appendChild(s);
