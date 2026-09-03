@@ -1520,15 +1520,18 @@ section {
   .about-story {
     padding: clamp(22px, 6vw, 34px);
   }
+  /* texto mais LONGO da página (história completa) — no mobile ele ficava
+     menor que no desktop (1.02rem < 1.07rem), o oposto do desejável pra
+     leitura numa tela pequena. Agora sobe em vez de encolher. */
   .about-story p {
-    font-size: 1.02rem;
-    line-height: 1.8;
+    font-size: 1.1rem;
+    line-height: 1.75;
   }
   .about-story p.about-story-lede {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
   .about-story p.about-story-close {
-    font-size: 1.12rem;
+    font-size: 1.2rem;
   }
 
   /* Missão e Visão empilham; troca a divisória vertical central por uma
@@ -1591,7 +1594,7 @@ section {
   .nav-links .nav-link {
     display: block;
     padding: 11px 12px;
-    font-size: 0.95rem;
+    font-size: 1.02rem;
     border-radius: 8px;
     transition:
       background 0.2s ease,
@@ -1613,6 +1616,76 @@ section {
   }
   .about-values {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Tipografia mobile: no celular, os textos de apoio (rótulos, cards,
+   legendas, balão da vela) ficavam pequenos demais pra leitura confortável
+   — feedback direto de cliente. Incremento moderado (não dobra nada),
+   só nos textos que estavam realmente pequenos; títulos grandes (h1/h2,
+   que já usam clamp()) e os botões principais não mudam, pra não
+   arriscar quebra de layout. Testado em 360px e 414px de largura. */
+@media (max-width: 640px) {
+  body {
+    font-size: 1.2rem; /* 18px -> 19.2px */
+  }
+
+  /* etiqueta pequena do Hero ("Oficina de velas") */
+  .eyebrow {
+    font-size: 0.88rem; /* 12.8px -> 14.1px */
+  }
+  /* rótulos em caixa alta acima dos títulos de seção */
+  .section-eyebrow,
+  .essence-values-title,
+  .product-perks-label {
+    font-size: 0.85rem; /* 12.5px -> 13.6px */
+  }
+  /* balão "Acenda a vela..." e assinatura da história */
+  .about-invite {
+    font-size: 0.95rem; /* 14.1px -> 15.2px */
+  }
+  .about-story p.about-story-sign {
+    font-size: 1rem; /* 15.2px -> 16px */
+  }
+  /* cartões do Catálogo: nome da vela, descrição, lista "Personalizamos" */
+  .product-card h3 {
+    font-size: 1.2rem; /* 18.4px -> 19.2px */
+  }
+  .product-desc,
+  .product-perks-list li {
+    font-size: 1rem; /* 14.7px -> 16px */
+  }
+  .product-media-hint {
+    font-size: 0.78rem; /* 11.5px -> 12.5px */
+  }
+  .product-badge {
+    font-size: 0.68rem; /* 9.9px -> 10.9px */
+  }
+  .catalog-note {
+    font-size: 1.02rem; /* 15.2px -> 16.3px */
+  }
+  /* cartões de Diferenciais e valores (Sobre/Essência) */
+  .diff-card h3 {
+    font-size: 1.15rem; /* 17.6px -> 18.4px */
+  }
+  .diff-card p {
+    font-size: 1rem; /* 14.7px -> 16px */
+  }
+  .value-card h3 {
+    font-size: 1.05rem; /* 16px -> 16.8px */
+  }
+  .value-card p {
+    font-size: 0.95rem; /* 14.1px -> 15.2px */
+  }
+  /* botões pequenos (aviso de cookies) e rodapé */
+  .btn-small {
+    font-size: 0.92rem; /* 13.6px -> 14.7px */
+  }
+  .cookie-banner p {
+    font-size: 1rem; /* 14.7px -> 16px */
+  }
+  .footer-inner p {
+    font-size: 0.95rem; /* 14.1px -> 15.2px */
   }
 }
 
